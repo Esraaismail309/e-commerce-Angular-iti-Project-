@@ -1,0 +1,15 @@
+<div class="card h-100 p-3 shadow">
+    <img [src]="product?.image" class="card-img-top w-50 my-3 m-auto" alt="...">
+    <div class="card-body w-100">
+        <h5 class="card-title text-danger">{{product?.title|uppercase}}</h5>
+        <p class="card-text">{{product?.description|slice:1:200}}</p>
+        <h5>{{product?.price|currency:' EGY '}}</h5>
+        <button class="btn btn-info ms-3" (click)=addToCart(product)>Add To Cart</button>
+
+        <button class="btn btn-danger ms-5 my-3" [routerLink]='["/product-detailes",product?.id]'>See Detailes</button>
+        <br>
+
+        <button class="btn btn-success ms-5" (click)='addToWish(product)'><i class="fa fa-star" aria-hidden="true"></i> Add
+            To Favourite</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<section class="mt-5">
+    <div class="container p-5">
+        <div class="row align-items-center  border p-5 shadow">
+            <div class="col-md-5">
+                <img [src]="detailes?.image" class="w-50" alt="">
+            </div>
+            <div class="col-md-7">
+                <h3 class="text-danger">{{detailes?.title|uppercase}}</h3>
+                <h4>{{detailes?.category}}</h4>
+                <h6 class="my-3">{{detailes?.price|currency:' EGP '}}</h6>
+                <p>{{detailes?.description}}</p>
+            </div>
+        </div>
+    </div>
+</section>

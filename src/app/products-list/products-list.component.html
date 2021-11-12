@@ -1,0 +1,9 @@
+<section class="my-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-6 my-3" *ngFor=" let item of productArr ">
+                <app-product-card [product]="item" (sendData)=reciveData($event)></app-product-card>
+            </div>
+        </div>
+    </div>
+</section>

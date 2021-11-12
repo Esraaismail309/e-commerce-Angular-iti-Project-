@@ -1,0 +1,130 @@
+<section class="my-5">
+    <div class="container">
+        <h2 class="text-center fs-1 mb-5">Registeration Form</h2>
+        <form class="w-75 m-auto border shadow rounded-3 p-5" [formGroup]=registerForm (ngSubmit)='submitRegisterForm()'>
+            <!-- name input -->
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nameInput" aria-describedby="nameInput" name="nameInput" formControlName="nameInput">
+            </div>
+            <!-- errors -->
+            <div *ngIf="registerFormControls.nameInput.touched&&!registerFormControls.nameInput.valid">
+                <p class="alert alert-danger" *ngIf="registerFormControls.nameInput.errors?.required">
+                    Name is required
+                </p>
+                <p class="alert alert-danger" *ngIf="registerFormControls.nameInput.errors?.minlength">
+                    Name must be at least 3 cha
+                </p>
+            </div>
+            <!-- email  -->
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email </label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailInput" name="emailInput" formControlName="emailInput">
+            </div>
+            <!-- errors  -->
+            <div *ngIf="registerFormControls.emailInput.touched&&!registerFormControls.emailInput.valid">
+                <p class="alert alert-danger" *ngIf="registerFormControls.emailInput.errors?.required">
+                    Email is required
+                </p>
+                <p class="alert alert-danger" *ngIf="registerFormControls.emailInput.errors?.email">
+                    Email is not correct
+                </p>
+            </div>
+            <!-- user name  -->
+            <div class="mb-3">
+                <label for="userNameInput" class="form-label">User name</label>
+                <input type="text" class="form-control" id="userNameInput" aria-describedby="userNameInput" name="userNameInput" formControlName="userNameInput">
+            </div>
+            <!-- errors -->
+            <div *ngIf="registerFormControls.userNameInput.touched&&!registerFormControls.userNameInput.valid">
+                <p class="alert alert-danger" *ngIf="registerFormControls.userNameInput.errors?.required">
+                    User Name is required
+                </p>
+                <p class="alert alert-danger" *ngIf="registerFormControls.userNameInput.errors?.pattern">
+                    User Name must not contain space
+                </p>
+            </div>
+            <!-- password   -->
+            <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordInput" name="passwordInput" formControlName="passwordInput">
+            </div>
+            <!-- errors -->
+            <div *ngIf="registerFormControls.passwordInput.touched&&!registerFormControls.passwordInput.valid">
+                <p class="alert alert-danger" *ngIf="registerFormControls.passwordInput.errors?.required">
+                    Password is required
+                </p>
+                <p class="alert alert-danger" *ngIf="registerFormControls.passwordInput.errors?.pattern">
+                    Password must be true
+                </p>
+                <p class="alert alert-danger" *ngIf="registerFormControls.passwordInput.errors?.minlength">
+                    Password must be at least 8 char
+                </p>
+            </div>
+            <!-- confirm password -->
+            <div class="mb-3">
+
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" required>
+                <p class="alert alert-danger" *ngIf="registerForm.get('confirmPassword')?.value && registerForm.errors?.mismatch">
+                    must be match with password
+                </p>
+
+            </div>
+            <button class="btn btn-info" type="button" (click)="addItem()">Add address</button>
+            <!-- ------------------------------------------ -->
+            <form class="w-75 mx-auto mt-5 border p-5 " id="addressForm">
+                <div formArrayName="address" *ngFor="let item of registerForm.controls.address.value; let i = index;">
+                    <h3>Adress Form {{i+1}}</h3>
+
+                    <div class="form-group p-3" [formGroupName]="i">
+                        <label>Address</label>
+                        <input class="form-control" formControlName="address" placeholder="Enter address" type="text">
+                        <div *ngIf="registerFormControls.address.touched&&!registerFormControls.address.valid">
+                            <p class="alert alert-danger" *ngIf="registerFormControls.address.errors?.required">
+                                address is required
+                            </p>
+                            <p class="alert alert-danger" *ngIf="registerFormControls.address.errors?.pattern">
+                                address must be true
+                            </p>
+                        </div>
+                        <label>street</label>
+                        <input class="form-control" formControlName="street" placeholder="Enter street" type="text">
+                        <div *ngIf="registerFormControls.street.touched&&!registerFormControls.street.valid">
+                            <p class="alert alert-danger" *ngIf="registerFormControls.street.errors?.required">
+                                street is required
+                            </p>
+                            <p class="alert alert-danger" *ngIf="registerFormControls.street.errors?.pattern">
+                                street must be true
+                            </p>
+                        </div>
+                        <label>Country</label>
+                        <input class="form-control" formControlName="country" placeholder="Enter country" type="text">
+                        <div *ngIf="registerFormControls.country.touched&&!registerFormControls.country.valid">
+                            <p class="alert alert-danger" *ngIf="registerFormControls.country.errors?.required">
+                                country is required
+                            </p>
+                        </div>
+                        <label>City</label>
+                        <input class="form-control" formControlName="city" type="text" placeholder="Enter city">
+
+                        <div *ngIf="registerFormControls.city.touched&&!registerFormControls.city.valid">
+                            <p class="alert alert-danger" *ngIf="registerFormControls.city.errors?.required">
+                                city is required
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" (click)="deleteAddress(i)">Remove Address</button>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary" (click)='createAddress()'>Submit</button>
+
+
+            <div class="text-center mt-4">
+                <strong>Already have account! ? <a class="text-decoration-underline pe-auto" routerLink="/log-in">
+                        Login</a></strong>
+            </div>
+        </form>
+    </div>
+
+</section>

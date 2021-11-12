@@ -1,0 +1,6 @@
+<div class="bg-light p-4">
+    <span class=" text-danger fs-5  d-flex justify-content-center "><strong class="shadow p-3">WishList Products :: {{ wishArray.length }} </strong></span>
+    <div class="row mt-5" *ngFor="let item of wishArray">
+        <app-wish-item [item]="item"></app-wish-item>
+    </div>
+</div>

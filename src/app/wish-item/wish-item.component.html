@@ -1,0 +1,10 @@
+<div class="row border-bottom p-2">
+    <div class="col-3">
+        <img class="w-100" [src]="item.image" alt="">
+    </div>
+    <div class="col-9">
+        <strong>{{item.title}}</strong>
+        <span class="bg-danger p-2 float-end border pe-auto" (click)=removeItem(item) style="cursor: pointer;">X</span>
+
+    </div>
+</div>

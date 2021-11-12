@@ -1,0 +1,40 @@
+<section class="my-5">
+    <div class="container">
+        <form class="w-75 m-auto border p-5 shadow rounded-3" #loginForm="ngForm" (ngSubmit)=submitData(loginForm)>
+
+            <!-- email -->
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="emailInput" required aria-describedby="emailInput" name="emailInput" #emailInput="ngModel" ngModel email>
+            </div>
+            <!-- errors -->
+            <div *ngIf=" emailInput.touched && !emailInput.valid">
+                <p class="alert alert-danger" *ngIf="emailInput.errors?.required">
+                    this input is requierd
+                </p>
+                <p class="alert alert-danger" *ngIf="emailInput.errors?.email">
+                    this input must be correct
+                </p>
+            </div>
+
+            <!-- password -->
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input required type="password" class="form-control border-transparent" required id="passwordInput" name="passwordInput" #passwordInput="ngModel" ngModel minlength="5">
+            </div>
+            <!-- errors -->
+            <div *ngIf="passwordInput.touched&&!passwordInput.valid">
+                <p class="alert alert-danger" *ngIf="passwordInput.errors?.required">
+                    Password is required
+                </p>
+                <p class="alert alert-danger" *ngIf="passwordInput.errors?.minlength">
+                    Minimum length is 8 char
+                </p>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+            <div class="text-center mt-4">
+                <strong>Dont have account ? <a class="text-decoration-underline pe-auto" routerLink="/register"> Registe</a></strong>
+            </div>
+        </form>
+    </div>
+</section>
